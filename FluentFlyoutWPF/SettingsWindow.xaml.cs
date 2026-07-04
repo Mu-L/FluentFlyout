@@ -4,6 +4,7 @@
 using FluentFlyout.Classes;
 using FluentFlyout.Classes.Settings;
 using FluentFlyoutWPF.Pages;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -20,6 +21,7 @@ public partial class SettingsWindow : FluentWindow
     private ScrollViewer? _contentScrollViewer;
     private List<SearchItem> _allSearchItems = new();
     private string? _pendingHighlightElementId = null;
+    static readonly Regex SplitCamelCaseRegex = new(@"(?<=[a-z0-9])(?=[A-Z])", RegexOptions.Compiled);
 
     public SettingsWindow()
     {
@@ -176,8 +178,8 @@ public partial class SettingsWindow : FluentWindow
         {
             string title = Application.Current.TryFindResource(item.ResourceKey)?.ToString() ?? item.ResourceKey;
             // Clean up the page type name (e.g. "SystemPage" -> "System")
-            string pageName = item.TargetPageType.Name.Replace("Page", "");
-            items.Add(new SearchItem { Title = $"{title} ({pageName})", TargetPageType = item.TargetPageType, TargetElementId = item.TargetElementId });
+            string pageName = SplitCamelCaseRegex.Replace(item.TargetPageType.Name.Replace("Page", ""), " ");
+            items.Add(new SearchItem { Title = $"{title}", Subtitle = pageName, TargetPageType = item.TargetPageType, TargetElementId = item.TargetElementId });
         }
 
         _allSearchItems = items;
@@ -370,6 +372,7 @@ public partial class SettingsWindow : FluentWindow
     public class SearchItem
     {
         public string Title { get; set; } = string.Empty;
+        public string Subtitle { get; set; } = string.Empty;
         public Type? TargetPageType { get; set; }
         public string? TargetElementId { get; set; }
         public override string ToString() => Title;
