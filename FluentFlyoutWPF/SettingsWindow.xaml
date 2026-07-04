@@ -33,20 +33,37 @@
             x:Name="TitleBar"
             Title="FluentFlyout"
             Grid.Row="0"
-            Panel.ZIndex="1">
+            Panel.ZIndex="1"
+			HorizontalContentAlignment="Center"
+			VerticalContentAlignment="Center">
 			<ui:TitleBar.Icon>
 				<ui:ImageIcon Source="/Resources/FluentFlyout2.ico" />
 			</ui:TitleBar.Icon>
+			<ui:TitleBar.Resources>
+				<Style TargetType="{x:Type ui:TitleBarButton}"
+					   BasedOn="{StaticResource {x:Type ui:TitleBarButton}}">
+					<Setter Property="Height" Value="48" />
+					<Setter Property="Width" Value="48" />
+				</Style>
+			</ui:TitleBar.Resources>
 			<ui:TitleBar.CenterContent>
-				<Grid x:Name="SearchGrid" VerticalAlignment="Center">
-					<ui:AutoSuggestBox x:Name="SearchBox" PlaceholderText="Search settings..." Width="250" HorizontalAlignment="Center" VerticalAlignment="Center" SuggestionChosen="SearchBox_SuggestionChosen" TextChanged="SearchBox_TextChanged" ClearButtonEnabled="True">
-						<ui:AutoSuggestBox.ItemTemplate>
-							<DataTemplate>
-								<TextBlock Text="{Binding Title}" TextTrimming="CharacterEllipsis" MaxWidth="220" ToolTip="{Binding Title}" />
-							</DataTemplate>
-						</ui:AutoSuggestBox.ItemTemplate>
-					</ui:AutoSuggestBox>
-				</Grid>
+				<ui:AutoSuggestBox x:Name="SearchBox"
+								   PlaceholderText="{DynamicResource SearchSettings}"
+								   Width="380"
+								   HorizontalAlignment="Center"
+								   VerticalAlignment="Center"
+								   SuggestionChosen="SearchBox_SuggestionChosen"
+								   TextChanged="SearchBox_TextChanged"
+								   ClearButtonEnabled="True">
+					<ui:AutoSuggestBox.ItemTemplate>
+						<DataTemplate>
+							<StackPanel Orientation="Vertical" Margin="0,-2">
+								<TextBlock Text="{Binding Title}" TextTrimming="CharacterEllipsis" MaxWidth="330" />
+								<TextBlock Text="{Binding Subtitle}" TextTrimming="CharacterEllipsis" MaxWidth="330" FontSize="12" Opacity="0.7" Visibility="{Binding Subtitle, Converter={StaticResource NullToCollapsedConverter}}" />
+							</StackPanel>
+						</DataTemplate>
+					</ui:AutoSuggestBox.ItemTemplate>
+				</ui:AutoSuggestBox>
 			</ui:TitleBar.CenterContent>
 		</ui:TitleBar>
 
