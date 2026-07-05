@@ -279,4 +279,7 @@ Du kannst helfen, die App zu übersetzen auf</system:String>
     <system:String x:Key="OnboardingStepsCounter">Schritt {0} von {1}</system:String>
     <system:String x:Key="AnonymousUsageDataTitle">Anonyme Nutzungsdaten übermitteln</system:String>
     <system:String x:Key="AnonymousUsageDataDescription">Mithilfe anonymer und nicht identifizierbarer Nutzungsdaten helfen die App zu verbessern</system:String>
+    <system:String x:Key="SearchSettings">Suchen Einstellungen</system:String>
+    <system:String x:Key="TaskbarWidgetScrollingTextTitle">Lauftext</system:String>
+    <system:String x:Key="TaskbarWidgetScrollingTextLoopForeverTitle">Durchgehend Scrollen</system:String>
 </ResourceDictionary>
