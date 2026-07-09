@@ -56,7 +56,7 @@ Anmerkung: Als Open-Source-Projekt sind diese Funktionen auch kostenlos verfügb
     <system:String x:Key="NextUpWindow_UpNextText">Als nächstes:</system:String>
     <system:String x:Key="UnlockPremiumButton">Premium freischalten</system:String>
     <system:String x:Key="SystemSettingsTitle">System</system:String>
-    <system:String x:Key="LockWindow_LockOn">am</system:String>
+    <system:String x:Key="LockWindow_LockOn">an</system:String>
     <system:String x:Key="MediaFlyoutTitle">Medien-Flyout</system:String>
     <system:String x:Key="TextBlockText1">Aktiviere Media Flyout</system:String>
     <system:String x:Key="TextBlockText3">Zeigt das Flyout an, wenn eine Medientaste gedrückt wurde.</system:String>
